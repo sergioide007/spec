@@ -11,21 +11,21 @@
    DESIGN SYSTEM — CSS VARIABLES
 ══════════════════════════════════════ */
 :root {
-  --ink:       #0a0f1e;
-  --paper:     #f4f1eb;
-  --signal:    #00e5a0;
+  --ink: #0a0f1e;
+  --paper: #f4f1eb;
+  --signal: #00e5a0;
   --signal-dim:#00a872;
-  --accent:    #ff4b6e;
-  --blue:      #1a5fe4;
-  --blue-lt:   #d6e4ff;
-  --warn:      #f59e0b;
-  --muted:     #6b7280;
-  --border:    rgba(10,15,30,0.12);
-  --card-bg:   #ffffff;
-  --mono:      'IBM Plex Mono', monospace;
-  --sans:      'IBM Plex Sans', sans-serif;
-  --radius:    8px;
-  --shadow:    0 2px 12px rgba(10,15,30,0.08);
+  --accent: #ff4b6e;
+  --blue: #1a5fe4;
+  --blue-lt: #d6e4ff;
+  --warn: #f59e0b;
+  --muted: #6b7280;
+  --border: rgba(10,15,30,0.12);
+  --card-bg: #ffffff;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'IBM Plex Sans', sans-serif;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(10,15,30,0.08);
   --shadow-lg: 0 8px 40px rgba(10,15,30,0.13);
 }
 
@@ -230,9 +230,9 @@ nav button.active { color: var(--signal); border-bottom-color: var(--signal); }
   margin-bottom: 10px;
 }
 .tag.green { background: #d1fae5; color: #047857; }
-.tag.red   { background: #fee2e2; color: #b91c1c; }
-.tag.warn  { background: #fef3c7; color: #92400e; }
-.tag.mono  { background: var(--ink); color: var(--signal); }
+.tag.red { background: #fee2e2; color: #b91c1c; }
+.tag.warn { background: #fef3c7; color: #92400e; }
+.tag.mono { background: var(--ink); color: var(--signal); }
 
 /* ══════════════════════════════════════
    CARDS
@@ -243,19 +243,33 @@ nav button.active { color: var(--signal); border-bottom-color: var(--signal); }
   border-radius: 12px;
   padding: 24px;
   box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none; /* si usas <a> */
+  color: inherit;        /* mantiene colores del texto */
 }
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  cursor: pointer;
+}
+
 .card-grid {
   display: grid;
   gap: 20px;
 }
 .card-grid.col2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
 .card-grid.col3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
 .card h3 {
   font-size: 15px;
   font-weight: 700;
   margin-bottom: 8px;
 }
-.card p { font-size: 14px; color: var(--muted); }
+.card p {
+  font-size: 14px;
+  color: var(--muted);
+}
 
 /* ══════════════════════════════════════
    FLOW / TIMELINE
@@ -349,8 +363,8 @@ tbody td:first-child { font-weight: 600; }
   font-weight: 600;
 }
 .badge.green { background: #d1fae5; color: #047857; }
-.badge.blue  { background: var(--blue-lt); color: var(--blue); }
-.badge.red   { background: #fee2e2; color: #b91c1c; }
+.badge.blue { background: var(--blue-lt); color: var(--blue); }
+.badge.red { background: #fee2e2; color: #b91c1c; }
 
 /* ══════════════════════════════════════
    SIMULATOR
@@ -583,8 +597,8 @@ tbody td:first-child { font-weight: 600; }
   border-top: 4px solid;
 }
 .risk-item.high { border-top-color: var(--accent); }
-.risk-item.med  { border-top-color: var(--warn); }
-.risk-item.low  { border-top-color: var(--signal); }
+.risk-item.med { border-top-color: var(--warn); }
+.risk-item.low { border-top-color: var(--signal); }
 .risk-label {
   font-size: 10px;
   font-weight: 700;
@@ -593,10 +607,10 @@ tbody td:first-child { font-weight: 600; }
   margin-bottom: 6px;
 }
 .risk-item.high .risk-label { color: var(--accent); }
-.risk-item.med  .risk-label { color: var(--warn); }
-.risk-item.low  .risk-label { color: var(--signal-dim); }
+.risk-item.med .risk-label { color: var(--warn); }
+.risk-item.low .risk-label { color: var(--signal-dim); }
 .risk-item h4 { font-size: 14px; margin-bottom: 6px; }
-.risk-item p  { font-size: 12.5px; color: var(--muted); }
+.risk-item p { font-size: 12.5px; color: var(--muted); }
 .risk-item .mit {
   margin-top: 10px;
   padding: 8px 10px;
@@ -666,11 +680,11 @@ footer {
    RESPONSIVE
 ══════════════════════════════════════ */
 @media (max-width: 720px) {
-  .hero-grid  { grid-template-columns: 1fr; }
+  .hero-grid { grid-template-columns: 1fr; }
   .hero-stat-box { display: none; }
-  .sim-grid   { grid-template-columns: 1fr; }
+  .sim-grid { grid-template-columns: 1fr; }
   .spec-anatomy { grid-template-columns: 1fr; }
-  .risk-grid  { grid-template-columns: 1fr; }
+  .risk-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -842,7 +856,7 @@ footer {
 const DATA = {
 
   heroStats: [
-    { num: "45%",  label: "del código IA sin SPEC contiene vulnerabilidades", src: "Rick-Brick, 2026" },
+    { num: "45%", label: "del código IA sin SPEC contiene vulnerabilidades", src: "Rick-Brick, 2026" },
     { num: "×100", label: "multiplicador de costo por iteración sin especificación", src: "estimación tokens" },
     { num: "1 pasada", label: "SPEC precisa → código limpio y testeable en una pasada", src: "L. Campbell, DEV 2026" },
   ],
@@ -893,10 +907,10 @@ const DATA = {
   ],
 
   goldenRules: [
-    { icon: "📝", title: "SPEC primero",         body: "Antes de quemar créditos, definimos el problema completo." },
-    { icon: "🔍", title: "IA para analizar",     body: "La IA valida y propone; el arquitecto decide." },
-    { icon: "📁", title: "Documentar en ADR",    body: "Cada decisión arquitectónica queda registrada con contexto." },
-    { icon: "👁", title: "Supervisión senior",   body: "El senior revisa implementación y valida criterios de salida." },
+    { icon: "📝", title: "SPEC primero", body: "Antes de quemar créditos, definimos el problema completo." },
+    { icon: "🔍", title: "IA para analizar", body: "La IA valida y propone; el arquitecto decide." },
+    { icon: "📁", title: "Documentar en ADR", body: "Cada decisión arquitectónica queda registrada con contexto." },
+    { icon: "👁", title: "Supervisión senior", body: "El senior revisa implementación y valida criterios de salida." },
   ],
 
   flowSteps: [
@@ -1009,32 +1023,32 @@ const DATA = {
   models: {
     headers: ["Modelo", "Proveedor", "Costo / 1M tokens", "Contexto", "Mejor uso en SDD", "Rol recomendado"],
     rows: [
-      { model: "Claude Sonnet 4.6", provider: "Anthropic", cost: "$3.00 / $15.00",  ctx: "200k",  use: "Análisis SPEC, ADR, revisión",    role: "Arquitecto IA",   badge: "blue" },
-      { model: "Claude Opus 4.6",   provider: "Anthropic", cost: "$15.00 / $75.00", ctx: "200k",  use: "Validación profunda, seguridad",  role: "Auditor senior",  badge: "blue" },
-      { model: "GPT-4o",            provider: "OpenAI",    cost: "$2.50 / $10.00",  ctx: "128k",  use: "Generación rápida de código",    role: "Dev IA",          badge: "green" },
-      { model: "Gemini 2.5 Pro",    provider: "Google",    cost: "$1.25 / $10.00",  ctx: "1M",    use: "Análisis de contexto largo",     role: "Analizador",      badge: "green" },
-      { model: "o3",                provider: "OpenAI",    cost: "$10.00 / $40.00", ctx: "200k",  use: "Razonamiento complejo, debug",   role: "Razonador",       badge: "red" },
-      { model: "Claude Haiku 4.5",  provider: "Anthropic", cost: "$0.80 / $4.00",   ctx: "200k",  use: "Tasks rápidos, clasificación",   role: "Worker rápido",   badge: "green" },
+      { model: "Claude Sonnet 4.6", provider: "Anthropic", cost: "$3.00 / $15.00", ctx: "200k", use: "Análisis SPEC, ADR, revisión", role: "Arquitecto IA", badge: "blue" },
+      { model: "Claude Opus 4.6", provider: "Anthropic", cost: "$15.00 / $75.00", ctx: "200k", use: "Validación profunda, seguridad", role: "Auditor senior", badge: "blue" },
+      { model: "GPT-4o", provider: "OpenAI", cost: "$2.50 / $10.00", ctx: "128k", use: "Generación rápida de código", role: "Dev IA", badge: "green" },
+      { model: "Gemini 2.5 Pro", provider: "Google", cost: "$1.25 / $10.00", ctx: "1M", use: "Análisis de contexto largo", role: "Analizador", badge: "green" },
+      { model: "o3", provider: "OpenAI", cost: "$10.00 / $40.00", ctx: "200k", use: "Razonamiento complejo, debug", role: "Razonador", badge: "red" },
+      { model: "Claude Haiku 4.5", provider: "Anthropic", cost: "$0.80 / $4.00", ctx: "200k", use: "Tasks rápidos, clasificación", role: "Worker rápido", badge: "green" },
     ]
   },
 
   agents: [
-    { icon: "🔒", title: "Agente Seguridad",  body: "Analiza SPEC para detectar vulnerabilidades, surface attack, OWASP top 10, autenticación y autorización." },
-    { icon: "📋", title: "Agente Dominio",    body: "Valida reglas de negocio, contratos de datos e integridad lógica contra la especificación funcional." },
-    { icon: "🎨", title: "Agente UX/UI",      body: "Evalúa flujos de usuario, accesibilidad (WCAG), consistencia de diseño y casos de error desde el usuario." },
+    { icon: "🔒", title: "Agente Seguridad", body: "Analiza SPEC para detectar vulnerabilidades, surface attack, OWASP top 10, autenticación y autorización." },
+    { icon: "📋", title: "Agente Dominio", body: "Valida reglas de negocio, contratos de datos e integridad lógica contra la especificación funcional." },
+    { icon: "🎨", title: "Agente UX/UI", body: "Evalúa flujos de usuario, accesibilidad (WCAG), consistencia de diseño y casos de error desde el usuario." },
     { icon: "⚙️", title: "Agente Generador", body: "Genera código limpio a partir de la SPEC validada. Produce tests unitarios y documentación inline automáticamente." },
-    { icon: "📊", title: "Agente Métricas",  body: "Registra tokens consumidos, costo por tarea, latencia de respuestas y cobertura de tests en cada sprint." },
-    { icon: "🎛", title: "Orquestador",       body: "Coordina agentes, distribuye tareas en paralelo, consolida resultados y genera el informe final en ADR." },
+    { icon: "📊", title: "Agente Métricas", body: "Registra tokens consumidos, costo por tarea, latencia de respuestas y cobertura de tests en cada sprint." },
+    { icon: "🎛", title: "Orquestador", body: "Coordina agentes, distribuye tareas en paralelo, consolida resultados y genera el informe final en ADR." },
   ],
 
   simulatorModels: [
-    { label: "Claude Haiku 4.5",  inputPer1M: 0.80,  outputPer1M: 4.00  },
-    { label: "GPT-4o mini",       inputPer1M: 0.15,  outputPer1M: 0.60  },
-    { label: "Claude Sonnet 4.6", inputPer1M: 3.00,  outputPer1M: 15.00 },
-    { label: "GPT-4o",            inputPer1M: 2.50,  outputPer1M: 10.00 },
-    { label: "Gemini 2.5 Pro",    inputPer1M: 1.25,  outputPer1M: 10.00 },
-    { label: "Claude Opus 4.6",   inputPer1M: 15.00, outputPer1M: 75.00 },
-    { label: "o3",                inputPer1M: 10.00, outputPer1M: 40.00 },
+    { label: "Claude Haiku 4.5", inputPer1M: 0.80, outputPer1M: 4.00 },
+    { label: "GPT-4o mini", inputPer1M: 0.15, outputPer1M: 0.60 },
+    { label: "Claude Sonnet 4.6", inputPer1M: 3.00, outputPer1M: 15.00 },
+    { label: "GPT-4o", inputPer1M: 2.50, outputPer1M: 10.00 },
+    { label: "Gemini 2.5 Pro", inputPer1M: 1.25, outputPer1M: 10.00 },
+    { label: "Claude Opus 4.6", inputPer1M: 15.00, outputPer1M: 75.00 },
+    { label: "o3", inputPer1M: 10.00, outputPer1M: 40.00 },
   ],
 
   adrs: [
@@ -1150,28 +1164,28 @@ const DATA = {
 
   repos: [
     {
-      name: "Spec-Kit",
-      url: "https://github.com/speckit",
-      desc: "Toolkit open source con 90k+ estrellas. Templates de PRD, SPEC y ADR listos para usar. Evita Vibe Coding desde el primer commit.",
-      tag: "MIT · 90k⭐"
+      name: "github/spec-kit",
+      url: "https://github.com/github/spec-kit",
+      desc: "Toolkit oficial de GitHub para SDD. Templates de PRD, SPEC y tareas. Integra con Copilot, Claude Code y Gemini CLI.",
+      tag: "■ MIT · GitHub oficial"
     },
     {
-      name: "OpenSpec",
-      url: "https://github.com/openspec",
-      desc: "Framework MIT con soporte para múltiples agentes IA. Ejemplo práctico: login paso a paso, con SPEC y tests generados.",
-      tag: "MIT · Multi-agente"
+      name: "Fission-AI/OpenSpec",
+      url: "https://github.com/Fission-AI/OpenSpec",
+      desc: "CLI ligero: propose → apply → archive. Soporta Claude Code, Cursor, Copilot y 20+ agentes. Ideal para proyectos brownfield.",
+      tag: "■ MIT · 28k■"
     },
     {
-      name: "spec-driven-ai-coding",
-      url: "https://github.com/spec-driven-ai-coding",
-      desc: "Plataforma multi-agente que integra con Cursor y VS Code. Orquesta GPT-4o, Claude y Gemini desde una sola interfaz.",
-      tag: "Apache 2.0"
-    },
-    {
-      name: "ADR Tools",
+      name: "npryce/adr-tools",
       url: "https://github.com/npryce/adr-tools",
-      desc: "CLI para crear y gestionar ADR en cualquier proyecto. Integra con Git hooks para recordar al dev que documente las decisiones.",
-      tag: "MIT · CLI"
+      desc: "CLI estándar para Architecture Decision Records como Markdown junto al código. brew install adr-tools.",
+      tag: "■ MIT · 5.4k■ · CLI"
+    },
+    {
+      name: "adr.github.io",
+      url: "https://adr.github.io/",
+      desc: "Hub central de ADR: templates MADR, herramientas y guías. Referencia canónica de la comunidad ADR.",
+      tag: "■ Comunidad · Referencia"
     },
   ],
 
@@ -1365,11 +1379,11 @@ function simUpdate() {
   simState.modelIdx = idx;
   const m = DATA.simulatorModels[idx];
 
-  const costInput  = (simState.inputTokens  / 1_000_000) * m.inputPer1M  * simState.iterations;
+  const costInput = (simState.inputTokens / 1_000_000) * m.inputPer1M * simState.iterations;
   const costOutput = (simState.outputTokens / 1_000_000) * m.outputPer1M * simState.iterations;
   const total = costInput + costOutput;
 
-  const conSpec    = (simState.inputTokens  / 1_000_000) * m.inputPer1M  * 1
+  const conSpec = (simState.inputTokens / 1_000_000) * m.inputPer1M * 1
                    + (simState.outputTokens / 1_000_000) * m.outputPer1M * 1;
 
   document.getElementById('sim-cost').textContent = `USD ${total.toFixed(4)}`;
@@ -1388,7 +1402,7 @@ function simUpdate() {
   // Mini bar chart
   const maxH = 72;
   const withoutH = Math.max(8, maxH);
-  const withH    = Math.max(8, Math.round((conSpec / total) * maxH));
+  const withH = Math.max(8, Math.round((conSpec / total) * maxH));
   document.getElementById('mini-chart').innerHTML = `
     <div class="mini-bar" style="background:var(--accent);height:${withoutH}px;color:rgba(255,255,255,0.8);align-items:flex-start;padding-top:4px;font-size:9px;flex-direction:column;gap:2px;">
       <span>Sin SPEC</span>
@@ -1456,15 +1470,15 @@ function renderQuotes() {
 
 // REPOS
 function renderRepos() {
-  document.getElementById('repos-grid').innerHTML = DATA.repos.map(r => `
-    <div class="card">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-        <h3 style="margin:0;font-family:var(--mono);font-size:14px;">${r.name}</h3>
-        <span class="tag">${r.tag}</span>
-      </div>
-      <p>${r.desc}</p>
-    </div>
-  `).join('');
+    document.getElementById('repos-grid').innerHTML = DATA.repos.map(r => `
+        <a href="${r.url}" target="_blank" class="card">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <h3 style="margin:0;font-family:var(--mono);font-size:14px;">${r.name}</h3>
+            <span class="tag">${r.tag}</span>
+        </div>
+        <p>${r.desc}</p>
+        </a>
+    `).join('');
 }
 
 /* ────────────────────────────────────────────────────────────
