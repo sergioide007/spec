@@ -664,6 +664,28 @@ tbody td:first-child { font-weight: 600; }
 .golden-rule-item p { font-size: 12px; color: rgba(255,255,255,0.55); }
 
 /* ══════════════════════════════════════
+   HERO PILLARS (intro)
+══════════════════════════════════════ */
+.hero-pillars {
+  max-width: 1100px;
+  margin: 36px auto 0;
+  padding: 0 24px;
+  display: none;
+  grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+  gap: 14px;
+}
+.hero-pillars.visible { display: grid; }
+.hero-pillar {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(0,229,160,0.18);
+  border-radius: 10px;
+  padding: 16px;
+}
+.hero-pillar .p-icon { font-size: 22px; margin-bottom: 8px; }
+.hero-pillar h4 { font-size: 13px; font-weight: 700; color: var(--signal); margin-bottom: 4px; }
+.hero-pillar p { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
+/* ══════════════════════════════════════
    FOOTER
 ══════════════════════════════════════ */
 footer {
@@ -707,15 +729,16 @@ footer {
 <div class="hero">
   <div class="hero-grid">
     <div>
-      <div class="hero-eyebrow">Arquitectura Senior · Spec-Driven Development</div>
+      <div class="hero-eyebrow">SDD · Teoría · Arquitectura Senior</div>
       <h1>Cómo un arquitecto senior<br>construye con <span>SPEC + IA</span></h1>
       <p class="hero-sub">
-        Demo end-to-end: de la idea al código limpio, sin vibe-coding, sin hardcode,
-        con flujos verificables, ADR, métricas reales y agentes coordinados.
+        La IA amplifica lo que defines, no lo que imaginas.<br>
+        Sin SPEC, cada prompt es una apuesta. Con SPEC, cada generación
+        es predecible, trazable y <strong style="color:#fff;">firmada por el arquitecto.</strong>
       </p>
       <div class="hero-ctas">
-        <button class="btn btn-primary" onclick="showPage('flujo', document.querySelectorAll('nav button')[1])">Ver el flujo completo →</button>
-        <button class="btn btn-outline" onclick="showPage('sim', document.querySelectorAll('nav button')[4])">Simular costos</button>
+        <button class="btn btn-primary" onclick="showPage('flujo', document.querySelectorAll('nav button')[1])">Ver el flujo SDD →</button>
+        <button class="btn btn-outline" onclick="showPage('spec', document.querySelectorAll('nav button')[2])">Anatomía de una SPEC</button>
       </div>
     </div>
     <div class="hero-stat-box">
@@ -723,6 +746,7 @@ footer {
       <div id="hero-stats"></div>
     </div>
   </div>
+  <div id="hero-pillars" class="hero-pillars"></div>
 </div>
 
 <!-- ═══════════════════════ PAGES ═══════════════════════ -->
@@ -731,12 +755,10 @@ footer {
 <div id="page-intro" class="page active">
   <div class="container">
     <div class="section-head">
-      <h2>¿Qué es Spec-Driven Development?</h2>
-      <p>El problema con el Vibe Coding y por qué la SPEC cambia todo.</p>
+      <h2>Regla de Oro del Arquitecto Senior</h2>
+      <p>Los cuatro principios que no son negociables cuando se trabaja con IA y SPEC.</p>
     </div>
-    <div id="intro-cards" class="card-grid col3"></div>
-
-    <div style="margin-top:40px;" class="golden" id="golden-rule-section"></div>
+    <div class="golden" id="golden-rule-section"></div>
   </div>
 </div>
 
@@ -1197,7 +1219,7 @@ const DATA = {
 
 function renderAll() {
   renderHeroStats();
-  renderIntroCards();
+  renderHeroPillars();
   renderGolden();
   renderFlow();
   renderSpecAnatomy();
@@ -1223,17 +1245,18 @@ function renderHeroStats() {
   `).join('');
 }
 
-// INTRO CARDS
-function renderIntroCards() {
-  const el = document.getElementById('intro-cards');
+// HERO PILLARS (intro content inside hero)
+function renderHeroPillars() {
+  const el = document.getElementById('hero-pillars');
   el.innerHTML = DATA.introPillars.map(p => `
-    <div class="card">
-      <div style="font-size:28px;margin-bottom:12px">${p.icon}</div>
+    <div class="hero-pillar">
+      <div class="p-icon">${p.icon}</div>
       <span class="tag ${p.tagType}">${p.tag}</span>
-      <h3>${p.title}</h3>
+      <h4>${p.title}</h4>
       <p>${p.body}</p>
     </div>
   `).join('');
+  el.classList.add('visible');
 }
 
 // GOLDEN
@@ -1490,6 +1513,10 @@ function showPage(id, btn) {
   const page = document.getElementById('page-' + id);
   if (page) page.classList.add('active');
   if (btn) btn.classList.add('active');
+  const hero = document.querySelector('.hero');
+  if (hero) hero.style.display = id === 'intro' ? '' : 'none';
+  const pillars = document.getElementById('hero-pillars');
+  if (pillars) pillars.classList.toggle('visible', id === 'intro');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
