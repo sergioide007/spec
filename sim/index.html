@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulador — SDD Teoría</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600&family=IBM+Plex+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<nav>
+  <div class="brand">SDD / TEORIA</div>
+  <a href="../" class="nav-link">Intro</a>
+  <a href="../flujo/" class="nav-link">Flujo SDD</a>
+  <a href="../spec/" class="nav-link">Anatomía SPEC</a>
+  <a href="../modelos/" class="nav-link">Modelos IA</a>
+  <a href="../sim/" class="nav-link active">Simulador</a>
+  <a href="../adr/" class="nav-link">ADR</a>
+  <a href="../riesgos/" class="nav-link">Riesgos</a>
+  <a href="../fuentes/" class="nav-link">Fuentes</a>
+</nav>
+
+<div class="container">
+  <div class="section-head">
+    <h2>Simulador de costos IA</h2>
+    <p>Calcula el costo real de iterar con o sin SPEC. Todos los valores son dinámicos.</p>
+  </div>
+  <div class="sim-grid">
+    <div class="sim-form card" id="sim-form-card"></div>
+    <div class="sim-result" id="sim-result-card">
+      <div class="res-label">Costo estimado</div>
+      <div class="res-val" id="sim-cost">USD 0.00</div>
+      <div class="sim-breakdown" id="sim-breakdown"></div>
+      <div class="mini-chart" id="mini-chart"></div>
+    </div>
+  </div>
+</div>
+
+<footer>Spec-Driven Development Demo · Arquitectura Senior 2026 · Datos servidos desde data-layer JS</footer>
+<script src="../data.js"></script>
+<script>
+  renderSimulator();
+</script>
+</body>
+</html>

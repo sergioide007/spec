@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modelos IA — SDD Teoría</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600&family=IBM+Plex+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<nav>
+  <div class="brand">SDD / TEORIA</div>
+  <a href="../" class="nav-link">Intro</a>
+  <a href="../flujo/" class="nav-link">Flujo SDD</a>
+  <a href="../spec/" class="nav-link">Anatomía SPEC</a>
+  <a href="../modelos/" class="nav-link active">Modelos IA</a>
+  <a href="../sim/" class="nav-link">Simulador</a>
+  <a href="../adr/" class="nav-link">ADR</a>
+  <a href="../riesgos/" class="nav-link">Riesgos</a>
+  <a href="../fuentes/" class="nav-link">Fuentes</a>
+</nav>
+
+<div class="container">
+  <div class="section-head">
+    <h2>Catálogo de Modelos IA</h2>
+    <p>Datos generados dinámicamente desde el data-layer. Sin hardcode en HTML.</p>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead id="models-thead"></thead>
+      <tbody id="models-tbody"></tbody>
+    </table>
+  </div>
+  <div style="margin-top:28px;" class="section-head">
+    <h2>Agentes y roles en Spec-Driven</h2>
+    <p>Cómo se coordinan los modelos según el tipo de tarea.</p>
+  </div>
+  <div class="card-grid col3" id="agents-grid"></div>
+</div>
+
+<footer>Spec-Driven Development Demo · Arquitectura Senior 2026 · Datos servidos desde data-layer JS</footer>
+<script src="../data.js"></script>
+<script>
+  renderModels();
+  renderAgents();
+</script>
+</body>
+</html>

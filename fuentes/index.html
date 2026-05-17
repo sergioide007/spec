@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fuentes — SDD Teoría</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600&family=IBM+Plex+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<nav>
+  <div class="brand">SDD / TEORIA</div>
+  <a href="../" class="nav-link">Intro</a>
+  <a href="../flujo/" class="nav-link">Flujo SDD</a>
+  <a href="../spec/" class="nav-link">Anatomía SPEC</a>
+  <a href="../modelos/" class="nav-link">Modelos IA</a>
+  <a href="../sim/" class="nav-link">Simulador</a>
+  <a href="../adr/" class="nav-link">ADR</a>
+  <a href="../riesgos/" class="nav-link">Riesgos</a>
+  <a href="../fuentes/" class="nav-link active">Fuentes</a>
+</nav>
+
+<div class="container">
+  <div class="section-head">
+    <h2>Fuentes y Evidencia</h2>
+    <p>Toda afirmación tiene respaldo. Libros, papers y comunidades verificables.</p>
+  </div>
+  <div id="quotes-list"></div>
+  <div style="margin-top:32px;" class="section-head">
+    <h2>Repositorios y herramientas</h2>
+  </div>
+  <div class="card-grid col2" id="repos-grid"></div>
+</div>
+
+<footer>Spec-Driven Development Demo · Arquitectura Senior 2026 · Datos servidos desde data-layer JS</footer>
+<script src="../data.js"></script>
+<script>
+  renderQuotes();
+  renderRepos();
+</script>
+</body>
+</html>
